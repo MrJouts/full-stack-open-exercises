@@ -40,14 +40,31 @@ const App = () => {
     setVoteCount(copy);
   };
 
+  const getIndexOfAnecdoteWithMostVotes = (): number => {
+    let maxVotes = 0;
+    let anecdoteIndex = 0;
+    for (const [index, voteCount] of Object.entries(votes)) {
+      if (voteCount > maxVotes) {
+        maxVotes = voteCount;
+        anecdoteIndex = Number(index);
+      }
+    }
+    return anecdoteIndex;
+  };
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {votes[selected]} votes</p>
       <button onClick={() => voteThisAnecdote(selected)}>Vote</button>
       <button onClick={() => setSelected(getRandomAnecdoteIndex())}>
         Next Anecdote
       </button>
+
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[getIndexOfAnecdoteWithMostVotes()]}</p>
+      <p>has {votes[getIndexOfAnecdoteWithMostVotes()]} votes</p>
     </div>
   );
 };
