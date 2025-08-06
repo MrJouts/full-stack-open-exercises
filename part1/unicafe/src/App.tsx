@@ -12,6 +12,7 @@ const Statistics = ({ good, neutral, bad }: StatisticsProps) => {
   const positive = (good / total || 0) * 100;
 
   if (total === 0) {
+    console.log("No feedback given");
     return <p>No feedback given</p>;
   }
 
