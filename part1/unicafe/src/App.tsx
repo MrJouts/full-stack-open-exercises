@@ -25,14 +25,16 @@ const Statistics = ({ good, neutral, bad }: StatisticsProps) => {
   }
 
   return (
-    <div>
-      <StatisticsLine text="Good" value={good} />
-      <StatisticsLine text="Neutral" value={neutral} />
-      <StatisticsLine text="Bad" value={bad} />
-      <StatisticsLine text="All" value={total} />
-      <StatisticsLine text="Average" value={average} />
-      <StatisticsLine text="Positive" value={positive} />
-    </div>
+    <table>
+      <tbody>
+        <StatisticsLine text="Good" value={good} />
+        <StatisticsLine text="Neutral" value={neutral} />
+        <StatisticsLine text="Bad" value={bad} />
+        <StatisticsLine text="All" value={total} />
+        <StatisticsLine text="Average" value={average} />
+        <StatisticsLine text="Positive" value={positive} />
+      </tbody>
+    </table>
   );
 };
 
@@ -43,9 +45,10 @@ type StatisticsLineProps = {
 
 const StatisticsLine = ({ text, value }: StatisticsLineProps) => {
   return (
-    <p>
-      {text} : {value}
-    </p>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   );
 };
 
