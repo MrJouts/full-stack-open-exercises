@@ -23,6 +23,22 @@ const Content = ({
   ));
 };
 
+const Total = ({ parts }: { parts: { exercises: number }[] }) => {
+  const getTotalExercises = () => {
+    let total = 0;
+    for (const part of parts) {
+      total += part.exercises;
+    }
+    return total;
+  };
+
+  return (
+    <p>
+      <strong>total of {getTotalExercises()} exercises</strong>
+    </p>
+  );
+};
+
 const Course = ({
   course,
 }: {
@@ -38,6 +54,7 @@ const Course = ({
     <div>
       <Header course={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   );
 };
@@ -57,6 +74,10 @@ const App = () => {
       {
         name: "State of a component",
         exercises: 14,
+      },
+      {
+        name: "Redux",
+        exercises: 11,
       },
     ],
   };
