@@ -24,17 +24,11 @@ const Content = ({
 };
 
 const Total = ({ parts }: { parts: { exercises: number }[] }) => {
-  const getTotalExercises = () => {
-    let total = 0;
-    for (const part of parts) {
-      total += part.exercises;
-    }
-    return total;
-  };
+  const total = parts.reduce((sum, part) => sum + part.exercises, 0);
 
   return (
     <p>
-      <strong>total of {getTotalExercises()} exercises</strong>
+      <strong>total of {total} exercises</strong>
     </p>
   );
 };
