@@ -6,6 +6,13 @@ const App = () => {
 
   const addPerson = (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (persons.find((person) => person.name === newName)) {
+      alert(`${newName} is already added to phonebook`);
+      setNewName("");
+      return;
+    }
+
     setPersons([...persons, { name: newName }]);
     setNewName("");
   };
